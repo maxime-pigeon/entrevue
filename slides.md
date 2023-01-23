@@ -9,11 +9,12 @@ _Maxime Pigeon_
 
 # Aperçu du cours
 
-1. Les **conditions** : prendre des décisions dans le code
-2. Les **boucles** dans le code
-3. Les **fonctions** : des blocs de code réutilisables
-4. Introduction aux **évènements**
-5. **Devoir** : galerie d'images
+1. **Révision** du cours précédent
+2. Les **conditions** : prendre des décisions dans le code
+3. Les **boucles** dans le code
+4. Les **fonctions** : des blocs de code réutilisables
+5. Introduction aux **évènements**
+6. **Devoir** : galerie d'images
 
 --
 
@@ -24,10 +25,9 @@ _Maxime Pigeon_
 **Les fonctions**
 
 1.  Qu'est-ce qu'une fonction ? <!-- .element: class="fragment" -->
-1.  À quoi servent les fonctions ? <!-- .element: class="fragment" -->
-1.  Définir une fonction <!-- .element: class="fragment" -->
-1.  Invoquer une fonction <!-- .element: class="fragment" -->
-1.  Portée d'une function <!-- .element: class="fragment" -->
+2.  À quoi servent les fonctions ? <!-- .element: class="fragment" -->
+3.  Définir une fonction <!-- .element: class="fragment" -->
+4.  Invoquer une fonction <!-- .element: class="fragment" -->
 
 ---
 
@@ -86,7 +86,7 @@ Le langage JavaScript a de nombreuses fonctions intégrées qui sont prédéfini
 
 # 2. À quoi servent les fonctions ?
 
-Les fonctions permettent de **simplifier** un programme en le divisant en un ensemble de sous-étapes. En **abstrayant** un programme complexe en plusieurs fonctions, il devient plus simple de le lire le code, de l'utiliser, et de l'entretenir.
+Les fonctions permettent de **simplifier** un programme en le divisant en un ensemble de sous-étapes. En **abstrayant** un programme complexe en plusieurs fonctions, il devient plus simple de le lire, de l'utiliser, et de l'entretenir.
 
 Notes:
 
@@ -94,7 +94,34 @@ Un peu comme cette présentation. Les fonctions permettent de structurer un prog
 
 --
 
-Les fonctions permettent de **réutiliser le code** au lieu de le réécrire. Elles permettent de **stocker dans un bloc** une partie de code qui effectue une tâche. De cette façon, au lieu de ré-écrire l'intégralité de ce code à chaque fois que nous avons besoin d'effectuer cette tâche, nous avons qu'à invoquer la fonction.
+Les fonctions permettent de **réutiliser le code** au lieu de le réécrire. Elles permettent de **stocker dans un bloc** une partie de code qui effectue une tâche. De cette façon, au lieu de ré-écrire l'intégralité de ce code à chaque fois que nous avons besoin d'effectuer cette tâche, nous n'avons qu'à invoquer la fonction.
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+```js []
+uint64_t s1 = *state0;
+uint64_t s0 = *state1;
+*state0 = s0;
+s1 ^= s1 << 23;
+s1 ^= s1 >> 17;
+s1 ^= s0;
+s1 ^= s0 >> 26;
+*state1 = s1;
+```
+
+<!-- .element: data-id="code-animation" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+```js []
+Math.random();
+```
+
+<!-- .element: data-id="code-animation" -->
 
 --
 
@@ -130,7 +157,7 @@ function nom(param1, param2, param3, etc) {
 
 #### À propos des paramètres
 
-Certaines fonctions nécessitent que l'on définisse des _paramètres_ lorsqu'on les appelle. Ce sont des valeurs qui doivent êtres inclues dans les parenthèses de la fonction pour que celle-ci fonctionne correctement.
+Certaines fonctions nécessitent que l'on définisse des _paramètres_ lorsqu'on les appelle. Ce sont des valeurs qui doivent être incluses dans les parenthèses de la fonction pour que celle-ci fonctionne correctement.
 
 --
 
@@ -138,7 +165,7 @@ Certaines fonctions nécessitent que l'on définisse des _paramètres_ lorsqu'on
 
 #### À propos des paramètres
 
-Certaines fonctions nécessitent que l'on définisse des _paramètres_ lorsqu'on les appelle. Ce sont des valeurs qui doivent êtres inclues dans les parenthèses de la fonction pour que celle-ci fonctionne correctement.
+Certaines fonctions nécessitent que l'on définisse des _paramètres_ lorsqu'on les appelle. Ce sont des valeurs qui doivent être incluses dans les parenthèses de la fonction pour que celle-ci fonctionne correctement.
 
 ```js []
 function addition(a, b) {
@@ -208,7 +235,7 @@ Quels sont ses instructions ?
 
 --
 
-Questions ?
+#### Questions ?
 
 ---
 
@@ -217,12 +244,12 @@ Questions ?
 Invoquer la fonction permet d'effectuer les actions des instructions avec les paramètres indiqués. Par exemple, si on définit la fonction `myFunction`, on peut l'appeler de la façon suivante :
 
 ```js [5,6]
-function myFunction() {
-  alert("hello");
+function saluer(nom) {
+  console.log("Bonjour " + nom);
 }
 
-myFunction();
-// appelle la fonction une fois
+saluer("Maxime");
+// Appelle la fonction une fois.
 ```
 
 Notes:
@@ -231,16 +258,8 @@ Vous êtes probablement au clair avec cela maintenant, mais juste au cas où… 
 
 Bien sûr, définir une fonction ne permet pas d'exécuter la fonction. Cela permet de lui donner un nom et de définir ce qui doit être fait lorsque la fonction est appelée.
 
-Maintenant que nous avons vu comment définir une fonction, voyons comment l'appeler.
+--
 
----
-
-# 5. Portée d'une fonction
-
-On ne peut pas accéder aux variables définies dans une fonction en dehors de cette fonction : ces variables n'existent que dans la portée de la fonction. En revanche, une fonction peut accéder aux différentes variables et fonctions qui appartiennent à la portée dans laquelle elle est définie. Une fonction définie dans une autre fonction peut également accéder à toutes les variables de la fonction « parente » et à toute autre variable accessible depuis la fonction « parente ».
-
-Notes:
-
-<!-- Functions allow us to keep our variable namespace clean (local variables only "live" as long as the function does). In other words, function_1 can use a variable called i, and function_2 can also use a variable called i and there is no confusion. Each variable i only exists when the computer is executing the given function. -->
+#### Questions ?
 
 ---
