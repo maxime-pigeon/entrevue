@@ -1,17 +1,33 @@
-# Qu'est-ce qu'une fonction en programmation?
+# Cours du 25 janvier 2023
 
-_Micro-enseignement -- 25/01/23_
-<br> Maxime Pigeon
+Cégep de Maisonneuve<br>
+_Maxime Pigeon_
 
 ---
 
+<!-- .slide: data-auto-animate -->
+
 # Aperçu du cours
 
-1. Qu'est-ce qu'une fonction ? <!-- .element: class="fragment" -->
-2. À quoi servent les fonctions ? <!-- .element: class="fragment" -->
-3. Définir une fonction <!-- .element: class="fragment" -->
-4. Invoquer une fonction <!-- .element: class="fragment" -->
-5. Portée d'une function <!-- .element: class="fragment" -->
+1. Les **conditions** : prendre des décisions dans le code
+2. Les **boucles** dans le code
+3. Les **fonctions** : des blocs de code réutilisables
+4. Introduction aux **évènements**
+5. **Devoir** : galerie d'images
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+# Aperçu du cours
+
+**Les fonctions**
+
+1.  Qu'est-ce qu'une fonction ? <!-- .element: class="fragment" -->
+1.  À quoi servent les fonctions ? <!-- .element: class="fragment" -->
+1.  Définir une fonction <!-- .element: class="fragment" -->
+1.  Invoquer une fonction <!-- .element: class="fragment" -->
+1.  Portée d'une function <!-- .element: class="fragment" -->
 
 ---
 
@@ -27,40 +43,31 @@ function carre(nombre) {
 
 --
 
-<!-- .slide: data-auto-animate -->
-
-Vous avez sûrement déjà utilisé des _fonctions intégrées_ auparavant. Comme par exemple pour manipulé une _chaîne de caractères_ (_string_) :
+Vous avez déjà utilisé des _fonctions intégrées_ dans ce cours. Comme par exemple pour afficher un message dans la console Web :
 
 ```js []
-var myText = "I am a string";
+const message = "Bonjour monde";
 
-var newString = myText.replace("string", "sausage");
+console.log(message);
 ```
 
 --
 
 <!-- .slide: data-auto-animate -->
-
-#### Récapitulation
-
-Quelle sera la valeur de la _variable_ `newString` ?
-
-```js []
-var myText = "I am a string";
-
-var newString = myText.replace("string", "sausage");
-```
-
-La fonction intégrée `replace()` sélectionne une chaîne, remplace une sous-chaîne par une autre, et renvoie la nouvelle chaîne avec les modifications effectuées.
-
-<!-- .element class="fragment" -->
-
---
-
-#### Récapitulation
 
 Autre exemple de _fonction intégrée_.<br>
-Quel pourrait être le résultat de la _variable_ `myNumber` ?
+
+```js []
+const myNumber = Math.random();
+```
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+#### Récapitulation
+
+Quel pourrait être le résultat de la _constante_ `myNumber` ?
 
 ```js []
 const myNumber = Math.random();
@@ -95,6 +102,8 @@ Les fonctions permettent de **réutiliser le code** au lieu de le réécrire. El
 
 ---
 
+<!-- .slide: data-auto-animate -->
+
 # 3. Définir une fonction
 
 Une fonction Javascript est construite avec le mot-clé `function`, suivi de :
@@ -111,7 +120,7 @@ function nom(param1, param2, param3, etc) {
 
 --
 
-Certaines fonctions nécessitent que l'on définisse des _paramètres_ lorsqu'on les appelle — ce sont des valeurs qui doivent êtres inclues dans les parenthèses de la fonction pour que celle-ci fonctionne correctement.
+<!-- .slide: data-auto-animate -->
 
 ```js []
 function nom(param1, param2, param3, etc) {
@@ -119,21 +128,25 @@ function nom(param1, param2, param3, etc) {
 }
 ```
 
+#### À propos des paramètres
+
+Certaines fonctions nécessitent que l'on définisse des _paramètres_ lorsqu'on les appelle. Ce sont des valeurs qui doivent êtres inclues dans les parenthèses de la fonction pour que celle-ci fonctionne correctement.
+
 --
 
-Par exemple, la fonction intégrée du navigateur `Math.random()` ne nécessite pas de paramètres. Lorsqu'elle est appelée, elle renvoie toujours un nombre aléatoire compris entre 0 et 1 :
+<!-- .slide: data-auto-animate -->
+
+#### À propos des paramètres
+
+Certaines fonctions nécessitent que l'on définisse des _paramètres_ lorsqu'on les appelle. Ce sont des valeurs qui doivent êtres inclues dans les parenthèses de la fonction pour que celle-ci fonctionne correctement.
 
 ```js []
-var myNumber = Math.random();
+function addition(a, b) {
+  return a + b;
+}
 ```
 
-La fonction de _chaîne_ (ou _string_) intégrée du navigateur `replace()` nécessite toutefois deux paramètres — la _sous-chaîne_ qu'elle doit remplacer à l'intérieur de la _chaîne_, et la _sous-chaîne_ par laquelle elle doit la remplacer :
-
-```js []
-var myText = "I am a string";
-
-var newString = myText.replace("string", "sausage");
-```
+Par exemple, la fonction `addition()` ci-haut prend 2 paramètres.
 
 --
 
@@ -147,19 +160,55 @@ Ces termes se réfèrent à des choses subtilement différentes, mais pour l'ins
 
 ---
 
+<!-- .slide: data-auto-animate -->
+
+#### Récapitulation
+
 ```js []
-// mot-clé + nom + (argument)
 function carre(nombre) {
-  // Instructions
   return nombre * nombre;
 }
 ```
 
-La fonction `carré` prend un seul argument, appelé `nombre`.
+Quel est le nom de la fonction ci-haut ?
 
-La fonction est composée d'une seule instruction qui renvoie l'argument (`nombre`) de la fonction multiplié par lui-même.
+**carre** <!-- .element: class="fragment" -->
 
-L'instruction `return` spécifie la valeur qui est renvoyée par la fonction.
+--
+
+<!-- .slide: data-auto-animate -->
+
+#### Récapitulation
+
+```js []
+function carre(nombre) {
+  return nombre * nombre;
+}
+```
+
+Combien de paramètres a-t-elle ?
+
+**1** <!-- .element: class="fragment" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+#### Récapitulation
+
+```js []
+function carre(nombre) {
+  return nombre * nombre;
+}
+```
+
+Quels sont ses instructions ?
+
+`return nombre * nombre` <!-- .element: class="fragment" -->
+
+--
+
+Questions ?
 
 ---
 
